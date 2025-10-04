@@ -1,26 +1,31 @@
-// Utility functions with potential issues
+// Updated utils.js with INTENTIONAL ERRORS for testing
 class DataProcessor {
     constructor() {
         this.data = null;
     }
     
-    // Method without proper validation
+    // INTENTIONAL ERROR: Missing validation - should check input type
     process(input) {
-        this.data = input;
-        return this.data.map(x => x * 2);
+        this.data = input; // No validation!
+        return this.data.map(x => x * 2); // Will crash if input is not array
     }
     
-    // Missing error handling
+    // INTENTIONAL ERROR: No error handling
     save() {
-        localStorage.setItem('data', JSON.stringify(this.data));
+        localStorage.setItem('data', JSON.stringify(this.data)); // No try-catch!
     }
 }
 
-// Global variable (bad practice)
-var globalCounter = 0;
+// INTENTIONAL ERROR: Still using global variable
+var globalCounter = 0; // Should be let or const
 
-// Function with side effects
-function incrementCounter() {
+// INTENTIONAL ERROR: Function name doesn't match variable
+function incrementCounter() { // Should be incrementGlobalCounter
     globalCounter++;
     return globalCounter;
+}
+
+// INTENTIONAL ERROR: Missing JSDoc documentation
+function helperFunction() {
+    return "This function has no documentation";
 }
